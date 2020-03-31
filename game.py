@@ -10,6 +10,9 @@ import time
 class Game:
 
     def __init__(self):
+        """
+            inititalize all the variables used in the program
+        """
         self.__file_path = 'files/record.json'
         self.__winning_point = 30
         self.__dice = Dice()
@@ -39,13 +42,12 @@ class Game:
                 if score is None:
                     continue
 
-                print('p1 score:' + str(score))
-
+                time.sleep(1.5)
                 if score + score_player1 > score_player1:
                     is_p1 = False
                     is_p2 = True
                     score_player1 = score + score_player1
-                    print('P1: ' + str(score_player1))
+                    self.__sense.show_message('P1: ' + str(score_player1))
 
             if is_p2:
                 score = self.__dice.go_dice(self.__sense, 'P2')
@@ -53,13 +55,12 @@ class Game:
                 if score is None:
                     continue
 
-                print('p2 score:' + str(score))
-
+                time.sleep(1.5)
                 if score + score_player2 > score_player2:
                     is_p1 = True
                     is_p2 = False
                     score_player2 = score + score_player2
-                    print('P2: ' + str(score_player2))
+                    self.__sense.show_message('P2: ' + str(score_player2))
 
             if score_player1 >= 30 or score_player2 >= 30:
                 time.sleep(2)
@@ -80,6 +81,19 @@ class Game:
         self.save_the_result(score_player1, score_player2)
 
     def save_the_result(self, score_player1, score_player2):
+        """
+        Save the result to a file
+        ---------------------------
+
+        Parameters:
+            
+            score_player1:
+                the score of player1
+
+            score_player2:
+                the score of player2
+        """
+
         record = dict()
         record['player2'] = score_player2
         record['player1'] = score_player1
@@ -104,6 +118,7 @@ class Game:
             file.close()
 
     def show_instructions(self):
+        """Show instruction on the screen"""
         self.__sense.show_message('TWO players. 30 points to win.')
 
 

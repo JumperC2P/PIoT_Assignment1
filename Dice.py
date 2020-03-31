@@ -10,6 +10,15 @@ class Dice:
         self.__threshold = 1
 
     def roll(self, sense):
+        """
+        Get the dice
+        ------------
+
+        Parameters:
+
+            sense:
+                sense hat object
+        """
         # get the random number from 1 to 6
         # then, based on the number, display different images
         number = random.randint(1, 6)
@@ -29,6 +38,18 @@ class Dice:
         return number
 
     def go_dice(self, sense, player):
+        """
+        Do dicing
+        -----------
+
+        Parameters:
+
+                sense:
+                    sense hat object
+                player:
+                    which player is playing now
+        """
+
         # set up to use accelerometer on sense hat
         sense.set_imu_config(False, False, True)
         # get the parameters from sense hat
