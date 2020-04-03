@@ -52,5 +52,18 @@ class MonitorAndDisplay:
                 "The format of the json file is wrong, which doesn't contain the attribute: " + str(ke))
 
 
-mon = MonitorAndDisplay()
-i = int("25")
+#mon = MonitorAndDisplay()
+#i = int("25")
+
+try:
+    f = open("files/winner.csv", "r")
+    if len(f.read()) == 0:
+        f.close()
+        f = open("files/winner.csv", "w")
+        f.write("Time, Winner, Player1_Score, Player2_Score")
+        f.close()
+
+except FileNotFoundError:
+    f = open("files/winner.csv", "w")
+    f.write("Time, Winner, Player1_Score, Player2_Score")
+    f.close()

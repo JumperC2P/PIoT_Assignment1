@@ -72,12 +72,11 @@ class MonitorAndDisplay:
         """Get the temperature and display on the scree"""
 
         # Get temperatures using different sources.
-        current_temp = self.__sense.get_temperature()
         tempH = self.__sense.get_temperature_from_humidity()
         tempP = self.__sense.get_temperature_from_pressure()
 
         # use the average to display on the screen.
-        self.show_temp(round((current_temp + tempH + tempP) / 3, 2))
+        self.show_temp(round((tempH + tempP) / 2, 2))
 
     def show_temp(self, temp):
         """
