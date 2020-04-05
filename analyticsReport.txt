@@ -1,0 +1,51 @@
+Task a: (animatedEmoji.py)
+(1) Give three pictures, named as 'spider', 'deadpool' and'volleyball'.
+(2) In function 'start', it will display three pictures on the LED screen at intervals of 3 seconds. 
+(3) Call the function ‘start’ to start the program
+
+Task b: (monitorAndDisplay.py)
+(1)Read the config.json file, and format the content to JSON format.
+(2)Check the content of config.json is valid or not, 
+   such as attributes is acceptable or not, and values is number or not,
+   and return some possible errors if loading unsuccessfully
+(3)Create a 'run' function. It need temperature detected by the temperature sensor 
+   and the pressure sensor of pi averaged and retain two decimal places. 
+   Display the numbers on the LED, and call 'show_temp' function to display result.
+(4)In function 'show_temp', 
+   When temp <= 10℃, it will display with blue colour. 
+   When temp is between 10 to 25℃, it will display with green colour.
+   When temp >= 25℃, it will display with blue colour.
+(5)Call the function 'run' to start the program and update every 10 seconds.
+
+Task c: (Dice.py, electonicDie.py, game.py)
+
+Dice.py
+(1)Setup the threshold for shaking as 1
+(2)In function 'roll', This function is to get the number from 1 to 6 randomly, 
+   and show 6 different dice pictures, and also return the number.
+(3)In function 'go_dice',it obtain the speed sensor of pi twice to get the parameters of x, y, z axis. 
+   If the number of new parameter minus the old parameter is greater that threshold,
+   it means that the remote sensing is successful.
+(4)Then call the function 'go_dice'
+
+electronicDie.py(for c1)
+(1)Create sense and show message 'Shake'.
+(2)Create 'run' function. Define 'is_next' to True, and start counting time, 
+   and if is_next is true, which means that it should get dice number, it will call dice.go_dice method.
+   Then set is_next to False, which means that it should not call roll, until 1 seconds later.
+(3)One seconds later, it sets is_next to True, and allow to roll again.
+(4)Call function 'run' to start the program.
+
+game.py(for c2)
+(1)It will preload the winner.csv file and check whether it is exist
+(3)Call function 'show_instructions' to show the instruction.
+(4)Define variables for both player1 and player2.
+(5)Roll the dice and take turns, and the scores will be recorded.
+(6)If anyone gets 30 points, the game is over.
+(7)Show the result (p1 or p2 or Tie) on the LED screen. 
+   When score_player1 >= 30 > score_player2 OR score_player1 > score_player2 >= 30  is P1 win
+   When score_player1 < 30 <= score_player2 OR  30 <= score_player1 < score_player2 is P2 win
+   When 30 <= score_player1 = score_player2, and the result is Tie.
+(8)In function 'save_the_result', it will record current_time, winner, score_player1 and score_player2 in the winner.csv.
+(9)Call function 'run' to start the game.
+
